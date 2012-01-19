@@ -1,0 +1,28 @@
+EntityDef InfoPlayerStart
+{
+  className=PointEntity;  
+}
+
+EntityDef PathCorner
+{
+	className=PointEntity; 
+	
+	components=Transform;
+}
+
+EntityDef GameCamera
+{
+  className=Entity;
+  
+  components=Transform;
+}
+
+EntityDef Paddle
+{
+  className=Paddle;
+  
+  components="ModelRenderer|Transform";
+  
+  leftLimit="leftLimit";
+  rightLimit="rightLimit";
+}
