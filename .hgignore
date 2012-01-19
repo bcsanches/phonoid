@@ -1,0 +1,5 @@
+glob:project/vs2008/Debug/
+glob:bin/
+glob:project/vs2008/Phonoid.ncb
+glob:project/vs2008/Phonoid.suo
+glob:project/vs2008/Phonoid.vcproj.mordor.bcsanches.user
