@@ -1,5 +1,6 @@
 #include "AK_Paddle.h"
 
+#include <PH_Core.h>
 #include <PH_Dictionary.h>
 #include <PH_EntityFactory.h>
 #include <PH_EntityKeys.h>
@@ -12,7 +13,8 @@ namespace Arkanoid
 	PH_FULL_ENTITY_CREATOR("Paddle", Paddle_c);
 
 	Paddle_c::Paddle_c(const Phobos::String_c &name):
-		Entity_c(name)
+		Entity_c(name),
+		clStrafeAccelerometer(0.5f)
 	{
 		//empty
 	}
@@ -29,8 +31,44 @@ namespace Arkanoid
 		const Phobos::String_c &leftLimitEntityName = dictionary.GetValue("leftLimit");
 		const Phobos::String_c &rightLimitEntityName = dictionary.GetValue("rightLimit");
 
+		pprpTransform = &this->GetCustomProperty<Phobos::TransformProperty_c>(PH_ENTITY_PROP_TRANSFORM);
+
 		Phobos::WorldManagerPtr_t worldManager = Phobos::WorldManager_c::GetInstance();
 		v3LeftLimit = boost::static_pointer_cast<Phobos::PointEntity_c>(worldManager->GetEntityByName(leftLimitEntityName))->GetTransform().GetOrigin();
 		v3RightLimit = boost::static_pointer_cast<Phobos::PointEntity_c>(worldManager->GetEntityByName(rightLimitEntityName))->GetTransform().GetOrigin();
+		
+		using namespace Ogre;
+		Vector3 center = v3RightLimit - v3LeftLimit;
+
+		fpTotalDistance = center.length();
+		v3Direction = center / fpTotalDistance;
+
+		center /= 2;
+		//pprpTransform->SetOrigin(center);
+
+		this->EnableFixedUpdate();
+	}
+
+	void Paddle_c::OnFixedUpdate()
+	{
+		using namespace Ogre;
+
+		const Phobos::CoreTimer_s &timer = Phobos::Core_c::GetInstance()->GetGameTimer();
+
+		//FIXME
+		if(!ipLastCmd)
+		{
+			clStrafeAccelerometer.SetButtonState(0);
+		}
+		else
+		{
+			clStrafeAccelerometer.SetButtonState(ipLastCmd->GetStrafe());
+		}
+
+		clStrafeAccelerometer.Update(timer.fpFrameTime);
+
+		Vector3 movement = v3Direction * clStrafeAccelerometer.GetValue() * timer.fpFrameTime;
+
+		pprpTransform->Translate(movement);
 	}
 }

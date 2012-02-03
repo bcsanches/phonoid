@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="PH_Dictionary_d.lib PH_EngineCore_d.lib PH_GamePlugin_d.lib PH_GameEngine_d.lib PH_Kernel_d.lib OgreMain_d.lib"
+				AdditionalDependencies="PH_Dictionary_d.lib PH_EngineCore_d.lib PH_GamePlugin_d.lib PH_GameEngine_d.lib PH_Input_d.lib PH_Kernel_d.lib OgreMain_d.lib"
 				OutputFile="$(OutDir)\$(ProjectName)_d.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(PHOBOS_HOME)\lib\&quot;"
@@ -183,6 +183,22 @@
 		</File>
 		<File
 			RelativePath="..\..\include\AK_Paddle.h"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\AK_PaddleCommandProducer.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\include\AK_PaddleCommandProducer.h"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\AK_PlayerController.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\include\AK_PlayerController.h"
 			>
 		</File>
 	</Files>
