@@ -33,6 +33,7 @@ namespace Arkanoid
 			Ogre::Vector3 v3Direction;
 
 			Phobos::Float_t fpTotalDistance;
+			Phobos::Float_t fpLeftDistance;
 
 			PaddleCmdPtr_t ipLastCmd;
 
