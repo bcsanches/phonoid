@@ -11,7 +11,7 @@
 namespace Arkanoid
 {
 	class PaddleCmd_c;
-	typedef boost::intrusive_ptr<PaddleCmd_c> PaddleCmdPtr_t;
+	typedef boost::shared_ptr<PaddleCmd_c> PaddleCmdPtr_t;
 
 	class PaddleCmd_c: public Phobos::IPlayerCmd_c
 	{

@@ -19,11 +19,10 @@ namespace Arkanoid
 
 			inline void SetCurrentCmd(PaddleCmdPtr_t cmd);
 
-
-		protected:
 			Paddle_c(const Phobos::String_c &name);
 			~Paddle_c();
 
+		protected:			
 			virtual void OnLoadFinished();
 			virtual void OnFixedUpdate();
 

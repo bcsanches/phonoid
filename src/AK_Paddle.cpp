@@ -28,8 +28,8 @@ namespace Arkanoid
 	{
 		const Phobos::Dictionary_c &dictionary = this->GetDictionary();
 
-		const Phobos::String_c &leftLimitEntityName = dictionary.GetValue("leftLimit");
-		const Phobos::String_c &rightLimitEntityName = dictionary.GetValue("rightLimit");
+		const Phobos::String_c &leftLimitEntityName = dictionary.GetString("leftLimit");
+		const Phobos::String_c &rightLimitEntityName = dictionary.GetString("rightLimit");
 
 		pprpTransform = &this->GetCustomProperty<Phobos::TransformProperty_c>(PH_ENTITY_PROP_TRANSFORM);
 

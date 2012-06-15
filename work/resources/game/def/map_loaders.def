@@ -1,0 +1,7 @@
+MapLoader ogscene
+{
+  loader = "OgitorMapLoader";
+  worldSpawnEntityDef = "OgitorWorldSpawn";
+}
+
+

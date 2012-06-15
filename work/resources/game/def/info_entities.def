@@ -1,3 +1,9 @@
+EntityDef OgitorWorldSpawn
+{
+  className=Entity;
+}
+
+
 EntityDef InfoPlayerStart
 {
   className=PointEntity;  

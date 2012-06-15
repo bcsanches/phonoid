@@ -1,5 +1,7 @@
 #include "AK_PaddleCommandProducer.h"
 
+#include <boost/make_shared.hpp>
+
 #include <PH_Console.h>
 #include <PH_ContextUtils.h>
 #include <PH_Core.h>
@@ -23,9 +25,7 @@ namespace Arkanoid
 	{
 		using namespace Phobos;
 		
-		return IPlayerCmdPtr_t(new PaddleCmd_c(
-			clStrafeButton.GetValue()
-		));
+		return boost::make_shared<PaddleCmd_c>(clStrafeButton.GetValue());
 	}
 
 	void PaddleCommandProducer_c::Enable()
